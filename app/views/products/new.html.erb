@@ -1,5 +1,8 @@
 <h2>New Game Product</h2>
 <%= form_for(@product) do |f| %>
+
+<%= f.error_messages %>
+
   <p>
     <%= f.label :title %><br />
     <%= f.text_field :title %>
