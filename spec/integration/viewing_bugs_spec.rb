@@ -3,13 +3,15 @@ require 'spec_helper'
 feature "Viewing bugs" do
   before do
     candycrush = Factory(:product, :title => "Candy Crush")
-    Factory(:bug,
+    user = Factory(:user)
+    bug = Factory(:bug,
             :product => candycrush,
             :title => "Fix the bug!",
             :description => "This is one of the coolest games ever!",
             :priority => "High",
             :status => "Open",
             :reporter => "Anonymous")
+    bug.update_attribute(:user, user)
 
     angrybird = Factory(:product, :title => "Angry Bird")
     Factory(:bug,

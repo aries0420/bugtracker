@@ -1,5 +1,6 @@
 <div id='bug'>
   <h2>Bug Title: <%= @bug.title %></h2>
+  <span id='author'>Bug filed by <%= @bug.user.email %></span>
   <p>Bug Description: <%= simple_format(@bug.description) %></p>
   <p>Priority: <%= @bug.priority %></p>
   <p>Status: <%= @bug.status %></p>

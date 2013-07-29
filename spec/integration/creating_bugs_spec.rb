@@ -3,9 +3,19 @@ require 'spec_helper'
 feature "Creating Bugs" do
   before do
     Factory(:product, :title => "Angry Birds")
+    user = Factory(:user, :email => "user@bugtracker.com")
+    user.confirm!
+
     visit '/'
     click_link "Angry Birds"
     click_link "New Bug"
+    message = "You need to sign in or sign up before continuing."
+    page.should have_content(message)
+
+    fill_in "Email", :with => "user@bugtracker.com"
+    fill_in "Password", :with => "password"
+    click_button "Sign in"
+    within("h2") { page.should have_content("New Bug") }
   end
 
   scenario "Creating a bug" do
@@ -16,6 +26,9 @@ feature "Creating Bugs" do
     fill_in "Reporter", :with => "Anonymous"
     click_button "Create Bug"
     page.should have_content("Bug has been created.")
+    within("#bug #author") do
+      page.should have_content("Bug filed by user@bugtracker.com")
+    end
   end
 
   scenario "Creating a bug without valid attributes fails" do

@@ -1,6 +1,7 @@
 class BugsController < ApplicationController
   before_filter :find_product
   before_filter :find_bug, :only => [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   def new
     @bug = @product.bugs.build
@@ -8,6 +9,7 @@ class BugsController < ApplicationController
 
   def create
     @bug = @product.bugs.build(params[:bug])
+    @bug.user = current_user
     if @bug.save
       flash[:notice] = "Bug has been created."
       redirect_to [@product, @bug]
