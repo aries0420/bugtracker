@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_filter :find_product, :only => [:show, :edit, :update, :destroy]
+
   def index
     @products = Product.all
   end
@@ -19,15 +21,12 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
     if @product.update_attributes(params[:product])
       flash[:notice] = "Game product has been updated."
       redirect_to @product
@@ -38,9 +37,16 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
     @product.destroy
     flash[:notice] = "Game product has been deleted."
     redirect_to products_path
   end
+
+  private
+    def find_product
+      @product = Product.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+      flash[:alert] = "The game product you were looking for could not be found."
+      redirect_to products_path
+    end
 end
