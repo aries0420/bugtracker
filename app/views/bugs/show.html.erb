@@ -1,10 +1,10 @@
 <div id='bug'>
-  <h2><%= @bug.title %></h2>
-  <%= link_to "Edit Bug", [:edit, @product, @bug] %>
+  <h2>Bug Title: <%= @bug.title %></h2>
+  <p>Bug Description: <%= simple_format(@bug.description) %></p>
+  <p>Priority: <%= @bug.priority %></p>
+  <p>Status: <%= @bug.status %></p>
+  <p>Reporter: <%= @bug.reporter %></p>
+  <%= link_to "Edit Bug", [:edit, @product, @bug] %><br>
   <%= link_to "Delete Bug", [@product, @bug], :method => :delete,
        :confirm => "Are you sure you want to delete this bug?" %>
-  <%= simple_format(@bug.description) %>
-  <%= @bug.priority %>
-  <%= @bug.status %>
-  <%= @bug.reporter %>
 </div>
