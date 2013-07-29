@@ -21,4 +21,19 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
   end
+
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update_attributes(params[:product])
+      flash[:notice] = "Game product has been updated."
+      redirect_to @product
+    else
+      flash[:alert] = "Game product has not been updated."
+      render :action => "edit"
+    end
+  end
 end
