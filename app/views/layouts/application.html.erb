@@ -65,11 +65,13 @@
                 </div>
               <% end %>
               <nav>
+                <div class="row1">
                 <% if user_signed_in? %>
                   Signed in as <%= current_user.email %>
                 <% else %>
                   <%= link_to "Sign up", new_user_registration_path %>
                 <% end %>
+                </div>
                 <%= link_to "Sign in", new_user_session_path %>
               </nav>
             <%= yield %>
@@ -78,7 +80,7 @@
             <div class="well sidebar-nav">
               <ul class="nav nav-list">
                 <li class="nav-header">About This App</li>
-                This is a bug tracking system for any game products to keep track of the current bugs filed.
+                This is a bug tracking system for any game products to keep track of the current bugs filed. Users must sign in in order to create a new product and/or to create a bug report for a particular game product.
               </ul>
             </div><!--/.well -->
           </div><!--/span-->
