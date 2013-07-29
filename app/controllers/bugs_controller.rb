@@ -33,6 +33,12 @@ class BugsController < ApplicationController
     end
   end
 
+  def destroy
+    @bug.destroy
+    flash[:notice] = "Bug has been deleted."
+    redirect_to @product
+  end
+
   private
     def find_product
       @product = Product.find(params[:product_id])
