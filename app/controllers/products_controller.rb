@@ -36,4 +36,11 @@ class ProductsController < ApplicationController
       render :action => "edit"
     end
   end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    flash[:notice] = "Game product has been deleted."
+    redirect_to products_path
+  end
 end
