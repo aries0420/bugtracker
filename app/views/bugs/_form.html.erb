@@ -10,15 +10,15 @@
   </p>
   <p>
     <%= f.label :priority %><br>
-    <%= f.text_field :priority %>
+    <%= f.select(:priority, [['High', "High"], ['Medium', "Medium"], ['Low', "Low"], ['Trivial', "Trivial"]]) %>
   </p>
   <p>
     <%= f.label :status %><br>
-    <%= f.text_field :status %>
+    <%= f.select(:status, [['Open', "Open"], ['Closed', "Closed"], ['Verified', "Verified"]]) %>
   </p>
   <p>
     <%= f.label :reporter %><br>
     <%= f.text_field :reporter %>
   </p>
-  <%= f.submit %>
+  <%= f.submit :class => 'btn btn-primary'%>
 <% end %>
