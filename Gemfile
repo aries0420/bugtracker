@@ -21,6 +21,11 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
+  # Gems for setting up twitter bootstrap interface
+  gem "therubyracer"
+  gem "less-rails"
+  gem 'twitter-bootstrap-rails'
 end
 
 group :development do
