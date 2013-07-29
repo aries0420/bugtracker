@@ -1,5 +1,7 @@
 Bugtracker::Application.routes.draw do
-  resources :products
+  resources :products do
+    resources :bugs
+  end
 
   root :to => "products#index"
   # The priority is based upon order of creation:
