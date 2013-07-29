@@ -1,0 +1,11 @@
+<h2>New Game Product</h2>
+<%= form_for(@product) do |f| %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  <%= f.submit %>
+<% end %>
