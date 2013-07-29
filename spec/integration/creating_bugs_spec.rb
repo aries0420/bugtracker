@@ -21,8 +21,8 @@ feature "Creating Bugs" do
   scenario "Creating a bug" do
     fill_in "Title", :with => "Unable to pause the game"
     fill_in "Description", :with => "I hit game over!"
-    fill_in "Priority", :with => "High"
-    fill_in "Status", :with => "Open"
+    select "High", :from => "Priority"
+    select "Open", :from => "Status"
     fill_in "Reporter", :with => "Anonymous"
     click_button "Create Bug"
     page.should have_content("Bug has been created.")
