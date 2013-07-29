@@ -3,5 +3,5 @@ class Product < ActiveRecord::Base
 
   validates :title, :presence => true
 
-  has_many :bugs
+  has_many :bugs, :dependent => :delete_all
 end

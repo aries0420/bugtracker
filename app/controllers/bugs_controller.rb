@@ -20,6 +20,19 @@ class BugsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @bug.update_attributes(params[:bug])
+      flash[:notice] = "Bug has been updated."
+      redirect_to [@product, @bug]
+    else
+      flash[:alert] = "Bug has not been updated."
+      render :action => "edit"
+    end
+  end
+
   private
     def find_product
       @product = Product.find(params[:product_id])
